@@ -4,21 +4,30 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.Parent;
+import java.io.*;
 
 import java.io.IOException;
 
 public class App extends Application {
+
+    private static Stage stage;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage primarystage) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("prova.fxml"));
 
         Scene scene = new Scene(fxmlLoader.load(), 666, 666);
 
-        stage.setTitle("Zeno puzza");
+        primarystage.setTitle("Progetto #WeGetVax");
 
-        stage.setScene(scene);
-        stage.show();
+        primarystage.setScene(scene);
+        primarystage.show();
+    }
+
+    public void changeScene(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stage.getScene().setRoot(pane);
     }
 
     public static void main(String[] args) {
